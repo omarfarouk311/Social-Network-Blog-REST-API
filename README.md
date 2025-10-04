@@ -5,11 +5,11 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
 
-This project is a RESTful API for a social networking blog platform, providing functionalities like user authentication, post and comment management, bookmarks, user management, and more. It is built with Node.js, Express.js, MongoDB, Nginx for load balancing and caching, and Docker for containerization. The API is tested using Postman, and a collection is available for easy reference.
+A social networking blog backend that exposes a REST API and provides functionalities like user authentication, posts and comments management, bookmarks, profile management, and more. It is built with Node.js, Express.js, MongoDB, Nginx for load balancing and caching, and Docker for containerization. The API is tested using Postman, and the collection is available for easy reference.
 
 ## Features
 - Authentication & Authorization
-    - Utilizes JWT, refresh tokens that allows users to refresh their token without having to log in repeatedly.
+    - Utilizes JWT, refresh tokens that allow users to refresh their token without having to log in repeatedly.
     - Maintaining a whitelist of valid tokens stored in the database.
     - CSRF tokens are used to secure the token refreshing process.
     - Users can create an account and log in securely.
@@ -38,9 +38,9 @@ This project is a RESTful API for a social networking blog platform, providing f
 - Dockerized Application: The project uses Docker to simplify deployment and management, with a Docker Compose file included for easy setup.
 
 ## Database
-- Aggregation Pipelines: Used to perform complex data querying and transformations, it also Includes bulk reading operations using MongoDB’s $lookup stage for efficient data joins between collections.
+- Aggregation Pipelines: Used to perform complex data querying and transformations, it also includes bulk reading operations using MongoDB’s $lookup stage for efficient data joins between collections.
 - Optimized Queries: Concurrent query execution when applicable and appropriate indexing for fast responses, even during complex operations.
-- Clustered Posts Collections: Posts are stored with their _id field as a clustered index for better indexing and retrieval, this ensures that the data is ordered on the disk by the order of the documents in the collection, ensuring that the minimum number of pages are read from the disk and reducing random I/O operations.
+- Clustered Posts Collections: Posts are stored with their _id field as a clustered index for better indexing and retrieval. This ensures that the data is ordered on the disk by the order of the documents in the collection, ensuring that the minimum number of pages are read from the disk and reducing random I/O operations.
 - Used TTL indexes to manage the deletion of tokens and refresh-tokens collections documents after their expiry time.
 - Transactions: Used for critical operations to ensure ACID properties compliance with specific read preference, read and write concerns, including setting the journal to true to ensure safe writes.
 
@@ -48,7 +48,7 @@ This project is a RESTful API for a social networking blog platform, providing f
 
 ## Reverse Proxy
 - Implemented L7 load balancing using Nginx as a reverse proxy to handle traffic distribution, ensuring high availability and fault tolerance.
-- used least connections algorithm for load balancing to ensure that the traffic is routed to the server that has the least connections.
+- used the least connections algorithm for load balancing to ensure that the traffic is routed to the server that has the fewest connections.
 - Enabled caching to cache images of users and posts.
 
 ## Installation
@@ -97,9 +97,10 @@ Follow these steps to set up the project locally:
     docker-compose up --scale api=3 -d
     ```
     This command will build the Docker images, create networks and volumes, and start the application with all its services.
-    Note that it starts 3 instances from the api service, but you can adjust it to more or less.
+    Note that it starts 3 instances from the api service, but you can adjust it to more or fewer.
 
 4. Access the API Once the services are up and running, you can access the API at http://localhost:8080, where `8080` is the port number exposed by nginx in the docker-compose.yml file.
 
 ## API Documentation
 You can find the API documentation [here](https://documenter.getpostman.com/view/34071055/2sAXxMgu6D)
+
